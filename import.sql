@@ -1,8 +1,5 @@
-DROP DATABASE IF EXISTS netland;
-CREATE DATABASE netland_users;
-USE `netland_users`;
-
-
+USE `netland`;
+DROP TABLE IF EXISTS gebruikers;
 CREATE TABLE `gebruikers`
     (
     `id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
