@@ -24,9 +24,9 @@ if ($_SESSION["ingelogd"]) {
     ?>
 Click here to <a href="logout.php" tite="Logout">Logout.
     <?php
- }else{
+}else {
     echo "<h1>Please login first .</h1>";
- } 
+}
 ?>
 </body>
 </html>
