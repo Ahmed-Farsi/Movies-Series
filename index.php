@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-
-<head>
-<title> Movies/Series </title>
-</head>
-
-<body>
-
-<h1> Welkom op het netland beheerderspaneel </h1>
-<br>
-
-
 <?php
 
    $host = '127.0.0.1:3306';
@@ -20,6 +8,30 @@
    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
    $PDO = new PDO($dsn, $user, $pass);
    session_start();
+?>
+<!DOCTYPE html>
+
+<head>
+<title> Movies/Series </title>
+</head>
+
+<body>
+
+<h1> Welkom op het netland beheerderspaneel </h1>
+<br>
+<?php
+if($_SESSION["ingelogd"]) {
+?>
+Click here to <a href="logout.php" tite="Logout">Logout.
+<?php
+}else echo "<h1>Please login first .</h1>";
+?>
+</body>
+</html>
+
+
+
+   <?php
 
 if (!isset($_SESSION["ingelogd"])) {
     header("Location: login.php");

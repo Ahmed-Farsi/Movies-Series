@@ -19,7 +19,7 @@ $PDO = new PDO($dsn, $user, $pass);
                     <input type="text" placeholder="Enter Username" name="username" required>
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password" required>
-                    <button type="submit">Login</button>
+                    <button type="submit" name="update"> Login</button>
                 <label>
             </form>
             <?php
