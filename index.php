@@ -20,28 +20,28 @@
 <h1> Welkom op het netland beheerderspaneel </h1>
 <br>
 <?php
-if($_SESSION["ingelogd"]) {
-?>
+ if($_SESSION["ingelogd"]) {
+    ?>
 Click here to <a href="logout.php" tite="Logout">Logout.
-<?php
-}else echo "<h1>Please login first .</h1>";
+    <?php
+ } else echo "<h1>Please login first .</h1>";
 ?>
 </body>
 </html>
 
 
 
-   <?php
+    <?php
 
-if (!isset($_SESSION["ingelogd"])) {
+    if (!isset($_SESSION["ingelogd"])) {
     header("Location: login.php");
 }
 
-if (isset($_GET["series_order"])) {
-    $orderBy = $_GET["series_order"];
-} else {
-    $orderBy = "title";
-}
+    if (isset($_GET["series_order"])) {
+        $orderBy = $_GET["series_order"];
+    } else {
+        $orderBy = "title";
+    }
 
     $queryserieseen = $PDO->query("
     SELECT 
