@@ -27,9 +27,10 @@ $PDO = new PDO($dsn, $user, $pass);
             if (isset($_POST["update"])) {
                 $uname = $_POST["username"];
                 $password = $_POST["password"];
-                $query = "SELECT * FROM gebruikers";
+                $query = "SELECT * FROM gebruikers WHERE gebruikersnaam = '$uname' ";
                 $query = $PDO->query($query);
                 $query = $query->fetchAll(PDO::FETCH_ASSOC);
+                var_dump($query);
                 if ($uname == $query[0]["gebruikersnaam"]) {
                     if ($password == $query[0]["wachtwoord"]) {
                         header("Location: index.php");
