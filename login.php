@@ -25,15 +25,15 @@ $PDO = new PDO($dsn, $user, $pass);
             </form>
     <?php
         session_start();
-            if (isset($_POST["update"])) {
-                $uname = $_POST["username"];
-                $password = $_POST["password"];
+    if (isset($_POST["update"])) {
+        $uname = $_POST["username"];
+            $password = $_POST["password"];
                 $stmt = $PDO->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :uname AND wachtwoord= :password ");
-                $stmt->bindParam("uname", $uname);
-                $stmt->bindParam("password", $password);
-                $stmt->execute();
-                $Resultaat = $stmt->fetchAll();
-                var_dump($Resultaat);
+            $stmt->bindParam("uname", $uname);
+        $stmt->bindParam("password", $password);
+        $stmt->execute();
+        $Resultaat = $stmt->fetchAll();
+        var_dump($Resultaat);
 
         if (count($Resultaat) > 0) {
                 header("Location: index.php");
