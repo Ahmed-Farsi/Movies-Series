@@ -7,6 +7,7 @@ $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $PDO = new PDO($dsn, $user, $pass);
 ?>
+
 <!DOCTYPE html>
     <head>
         <title> Login </title>
@@ -22,29 +23,25 @@ $PDO = new PDO($dsn, $user, $pass);
                     <button type="submit" name="update"> Login</button>
                 <label>
             </form>
-            <?php
-            session_start();
+    <?php
+        session_start();
             if (isset($_POST["update"])) {
                 $uname = $_POST["username"];
                 $password = $_POST["password"];
-                $query = "SELECT * FROM gebruikers WHERE gebruikersnaam = '$uname' ";
-                $query = $PDO->query($query);
-                $query = $query->fetchAll(PDO::FETCH_ASSOC);
-                var_dump($query);
-                if ($uname == $query[0]["gebruikersnaam"]) {
-                    if ($password == $query[0]["wachtwoord"]) {
-                        header("Location: index.php");
-                        $_SESSION["ingelogd"] = 1;
-                    } 
-                } 
-                if ($uname !== $query[0]["gebruikersnaam"]) {
-                    echo "Invalide username" . PHP_EOL;
-                }
-                if ($password !== $query[0]["wachtwoord"]) {
-                    echo "Invalide password";
-                }
+                $stmt = $PDO->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :uname AND wachtwoord= :password ");
+                $stmt->bindParam("uname", $uname);
+                $stmt->bindParam("password", $password);
+                $stmt->execute();
+                $Resultaat = $stmt->fetchAll();
+                var_dump($Resultaat);
+
+        if (count($Resultaat) > 0) {
+                header("Location: index.php");
+                $_SESSION["ingelogd"] = 1;
+        } else {
+            echo "Gebruikersnaam of wachtwoord ongeldig";
             }
-            
-            ?>
+        }
+        ?>
     </body>
 </html>
