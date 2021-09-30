@@ -40,8 +40,8 @@ $PDO = new PDO($dsn, $user, $pass);
                 $_SESSION["ingelogd"] = 1;
         } else {
             echo "Gebruikersnaam of wachtwoord ongeldig";
-            }
         }
-        ?>
+    }
+    ?>
     </body>
 </html>
